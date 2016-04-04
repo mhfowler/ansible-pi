@@ -8,7 +8,11 @@ def announce_ip():
     index = 0
     while index < 200:
         print '++ attempting to announce ip: {}'.format(index)
-        slack_notify_message('its pi')
+        try:
+            slack_notify_message('its pi')
+            return
+        except Exception as e:
+            pass
         index += 1
         time.sleep(1)
     # s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
