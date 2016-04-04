@@ -18,5 +18,7 @@ if [ "$_IP" ]; then
   printf "My IP address is %s\n" "$_IP"
   echo "$_IP" > {{log_dir}}/ip.log
 fi
+export PYTHONPATH={{src_dir}}:$PYTHONPATH
+python {{src_dir}}/pi_utilities/announce_ip.py
 
 exit 0
