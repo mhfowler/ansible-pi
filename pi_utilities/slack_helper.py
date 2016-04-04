@@ -17,8 +17,6 @@ def slack_notify_message(message, channel_id=None):
     if not channel_id:
         channel_id = 'C0XL6UBA6'
 
-    print '++ channel_id: {}'.format(channel_id)
-
     sc.api_call('chat.postMessage', channel=channel_id,
                 text='{message}'.format(message=message), link_names=1,
                 as_user=True)

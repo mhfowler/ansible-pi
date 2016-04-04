@@ -9,16 +9,17 @@ def announce_ip():
     while index < 200:
         print '++ attempting to announce ip: {}'.format(index)
         try:
-            slack_notify_message('its pi')
+            s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+            s.connect(("gmail.com",80))
+            ip_address = s.getsockname()[0]
+            s.close()
+            slack_notify_message('@channel: its pi: {}'.format(ip_address))
             return
         except Exception as e:
             pass
         index += 1
         time.sleep(1)
-    # s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-    # s.connect(("gmail.com",80))
-    # ip_address = s.getsockname()[0]
-    # s.close()
+
 
 
 if __name__ == '__main__':
