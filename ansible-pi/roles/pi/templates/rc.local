@@ -16,10 +16,10 @@ echo "test" > {{log_dir}}/test.log
 python -c "print 'test'" > {{log_dir}}/test_python.log
 python {{src_dir}}/pi_utilities/test.py
 export PYTHONPATH={{src_dir}}:$PYTHONPATH
-python {{src_dir}}/pi_utilities/announce_ip_test2.py &> {{log_dir}}/announce_test2.log
+python {{src_dir}}/pi_utilities/announce_ip_test2.py > {{log_dir}}/announce_test2.log
 printenv > {{log_dir}}/env.log
-python {{src_dir}}/pi_utilities/announce_ip_test.py &> {{log_dir}}/announce_test.log
-python {{src_dir}}/pi_utilities/announce_ip.py &> {{log_dir}}/announce.log
+python {{src_dir}}/pi_utilities/announce_ip_test.py > {{log_dir}}/announce_test.log
+python {{src_dir}}/pi_utilities/announce_ip.py > {{log_dir}}/announce.log
 _IP=$(hostname -I) || true
 if [ "$_IP" ]; then
   printf "My IP address is %s\n" "$_IP"
