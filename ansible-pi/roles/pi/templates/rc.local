@@ -14,6 +14,7 @@
 # Print the IP address
 echo "test" > {{log_dir}}/test.log
 python -c "print 'test'" > {{log_dir}}/test_python.log
+python {{src_dir}}/pi_utilities/test.py
 export PYTHONPATH={{src_dir}}:$PYTHONPATH
 python {{src_dir}}/pi_utilities/announce_ip.py &> {{log_dir}}/announce.log
 _IP=$(hostname -I) || true
