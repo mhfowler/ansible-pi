@@ -24,7 +24,7 @@ def announce_ip():
             current_connection = wireless.current()
             if current_connection:
                 slack_notify_message('warning: was already connected to network: {}'.format(current_connection))
-            connected = wireless.connect(ssid=SECRETS_DICT['SSID'], password=SECRETS_DICT['PASSWORD'])
+            connected = wireless.connect(ssid=SECRETS_DICT['WIFI_SSID'], password=SECRETS_DICT['WIFI_PASSWORD'])
             if not connected:
                 raise Exception('failed to connect')
             else:
@@ -39,7 +39,7 @@ def announce_ip():
                 slack_notify_message('iwget: {} | {}'.format(iwget, get_ip()))
                 return
             except Exception as e:
-                slack_notify_message('warning: failed to log detailed info')
+                slack_notify_message('warning: failed to log all detailed info')
             return
         except Exception as e:
             pass
