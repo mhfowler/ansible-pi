@@ -27,7 +27,7 @@ def announce_ip():
             ip_address = get_ip()
             if ip_address:
                 current_connection = wireless.current()
-                slack_notify_message('@channel: its pi: {} | {}'.format(ip_address, current_connection))
+                slack_notify_message('@channel: its pi: {} | {}'.format(str(ip_address), str(current_connection)))
                 break
             # else try to connect
             connected = wireless.connect(ssid=SECRETS_DICT['WIFI_SSID'], password=SECRETS_DICT['WIFI_PASSWORD'])
@@ -41,7 +41,7 @@ def announce_ip():
     LOG_DETAILED_INFO = True
     if LOG_DETAILED_INFO:
         try:
-            slack_notify_message('...logging  info')
+            slack_notify_message('++ logging detailed info')
             ifconfig = subprocess.check_output('ifconfig', shell=True)
             slack_notify_message('ifconfig: {}'.format(ifconfig))
             iwget = subprocess.check_output('iwgetid', shell=True)
