@@ -9,7 +9,7 @@
 #  action: apt upgrade=safe
 
 - name: 'Ensure log directory'
-  action: file dest={{log_dir}} state=directory
+  action: file dest={{log_dir}} state=directory mode=777
 
 #- name: 'Ensure src_dir'
 #  action: file dest={{src_dir}} state=directory
