@@ -20,6 +20,8 @@ def announce_ip():
         try:
             ip_address = get_ip()
             slack_notify_message('@channel: its pi: {}'.format(ip_address))
+            ifconfig = subprocess.check_output('ifconfig', shell=True)
+            slack_notify_message('ifconfig: {}'.format(ifconfig))
             while index < 200:
                 try:
                     iwget = subprocess.check_output('iwgetid', shell=True)
