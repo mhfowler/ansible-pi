@@ -1,5 +1,7 @@
 import socket
 import time
+import subprocess
+import re
 
 from pi_utilities.slack_helper import slack_notify_message
 
@@ -14,6 +16,8 @@ def announce_ip():
             ip_address = s.getsockname()[0]
             s.close()
             slack_notify_message('@channel: its pi: {}'.format(ip_address))
+            iwget = subprocess.check_output('iwgetid', shell=True)
+            slack_notify_message('@channel: iwget: {}'.format(iwget))
             return
         except Exception as e:
             pass
