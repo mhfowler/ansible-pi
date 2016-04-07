@@ -34,6 +34,6 @@
 - name: 'Copy rc.local'
   action: template src=templates/rc.local dest=/etc/rc.local
 
-#- name: 'Reboot'
-#  command: /sbin/reboot
+- name: 'Reboot'
+  command: /sbin/reboot
 
