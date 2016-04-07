@@ -17,7 +17,7 @@ def announce_ip():
             s.close()
             slack_notify_message('@channel: its pi: {}'.format(ip_address))
             iwget = subprocess.check_output('iwgetid', shell=True)
-            slack_notify_message('@channel: iwget: {}'.format(iwget))
+            slack_notify_message('iwget: {}'.format(iwget))
             return
         except Exception as e:
             pass
