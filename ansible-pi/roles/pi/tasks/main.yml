@@ -34,6 +34,9 @@
 - name: 'Copy rc.local'
   action: template src=templates/rc.local dest=/etc/rc.local
 
+ - name: 'Copy etc/network/intefaces'
+  action: template src=templates/intefaces dest=/etc/network/interfaces
+
 - name: 'Reboot'
   command: /sbin/reboot
 

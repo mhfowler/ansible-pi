@@ -18,15 +18,10 @@ python {{src_dir}}/pi_utilities/test.py
 export PYTHONPATH={{src_dir}}:$PYTHONPATH
 printenv > {{log_dir}}/env.log
 python {{src_dir}}/pi_utilities/announce_ip.py > {{log_dir}}/announce.log 2> {{log_dir}}/announce.error
-# Print the IP address
 _IP=$(hostname -I) || true
 if [ "$_IP" ]; then
   printf "My IP address is %s\n" "$_IP"
   echo "$_IP" > {{log_dir}}/ip.log
 fi
-
-# Disable the ifplugd eth0
-# sudo ifplugd eth0 --kill
-# sudo ifup wlan0
 
 exit 0

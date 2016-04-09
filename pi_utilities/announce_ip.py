@@ -7,6 +7,10 @@ from pi_utilities.slack_helper import slack_notify_message
 from hello_settings import SECRETS_DICT
 
 
+USE_PYTHON_TO_CONNECT = False
+LOG_DETAILED_INFO = True
+
+
 def get_ip():
     try:
         s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
@@ -32,19 +36,19 @@ def announce_ip():
                 slack_notify_message('@channel: its pi: {} | {}'.format(str(ip_address), str(current_connection)))
                 break
             # else try to connect
-            print '++ trying to connect'
-            connected = wireless.connect(ssid=SECRETS_DICT['WIFI_SSID'], password=SECRETS_DICT['WIFI_PASSWORD'])
-            if not connected:
-                print ':-( failed to connect'
-            else:
-                print ':) connected'
+            if USE_PYTHON_TO_CONNECT:
+                print '++ trying to connect'
+                connected = wireless.connect(ssid=SECRETS_DICT['WIFI_SSID'], password=SECRETS_DICT['WIFI_PASSWORD'])
+                if not connected:
+                    print ':-( failed to connect'
+                else:
+                    print ':) connected'
         except Exception as e:
             print ':/ error: {}'.format(str(e.message))
             pass
         index += 1
         time.sleep(1)
     # after we have connected, log some info about the connection
-    LOG_DETAILED_INFO = True
     if LOG_DETAILED_INFO:
         try:
             slack_notify_message('++ logging detailed info')
