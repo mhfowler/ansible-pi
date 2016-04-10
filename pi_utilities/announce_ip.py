@@ -29,10 +29,10 @@ def announce_ip():
         print '++ attempting to announce ip: {}'.format(index)
         try:
             ip_address = get_ip()
+            current_connection = wireless.current()
             print '++ found ip_address: {}'.format(str(ip_address))
+            print '++ found current_connection: {}'.format(str(current_connection))
             if ip_address:
-                current_connection = wireless.current()
-                print '++ found current_connection: {}'.format(current_connection)
                 slack_notify_message('@channel: its pi: {} | {}'.format(str(ip_address), str(current_connection)))
                 break
             # else try to connect
