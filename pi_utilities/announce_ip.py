@@ -32,6 +32,10 @@ def announce_ip():
             current_connection = wireless.current()
             print '++ found ip_address: {}'.format(str(ip_address))
             print '++ found current_connection: {}'.format(str(current_connection))
+            routes = subprocess.check_output('route -n', shell=True)
+            print '++ routes'
+            print routes
+            print '++ endroutes'
             if ip_address:
                 slack_notify_message('@channel: its pi: {} | {}'.format(str(ip_address), str(current_connection)))
                 break
