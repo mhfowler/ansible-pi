@@ -54,15 +54,11 @@ def announce_ip():
         time.sleep(1)
     # after we have connected, log some info about the connection
     if LOG_DETAILED_INFO:
-        try:
-            print '++++ logging detailed info'
-            ifconfig = subprocess.check_output('ifconfig', shell=True)
-            print 'ifconfig: {}'.format(ifconfig)
-            iwget = subprocess.check_output('iwgetid', shell=True)
-            print 'iwget: {} | {}'.format(iwget, get_ip())
-            return
-        except Exception as e:
-            slack_notify_message('warning: failed to log all detailed info')
+        print '++++ logging detailed info'
+        ifconfig = subprocess.check_output('ifconfig', shell=True)
+        print 'ifconfig: {}'.format(ifconfig)
+        iwget = subprocess.check_output('iwgetid', shell=True)
+        print 'iwget: {} | {}'.format(iwget, get_ip())
 
 
 if __name__ == '__main__':
