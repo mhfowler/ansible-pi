@@ -34,5 +34,5 @@ def list_channels():
 
 
 if __name__ == '__main__':
-    channels = json.loads(list_channels())
+    channels = list_channels()
     slack_notify_message('test message')
