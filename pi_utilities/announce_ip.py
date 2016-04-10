@@ -54,11 +54,14 @@ def announce_ip():
         time.sleep(1)
     # after we have connected, log some info about the connection
     if LOG_DETAILED_INFO:
-        print '++++ logging detailed info'
-        ifconfig = subprocess.check_output('ifconfig', shell=True)
-        print 'ifconfig: {}'.format(ifconfig)
-        iwget = subprocess.check_output('iwgetid', shell=True)
-        print 'iwget: {} | {}'.format(iwget, get_ip())
+        try:
+            print '++++ logging detailed info'
+            ifconfig = subprocess.check_output('ifconfig', shell=True)
+            print 'ifconfig: {}'.format(ifconfig)
+            iwget = subprocess.check_output('iwgetid', shell=True)
+            print 'iwget: {} | {}'.format(iwget, get_ip())
+        except Exception as e:
+            print 'warning: failed to log detailed info: {}'.format(e.message)
 
 
 if __name__ == '__main__':
