@@ -40,13 +40,13 @@ def iw():
         for tweet in reversed(tweets):
             since_id = tweet['id_str']
             tweet_text = tweet.get('text')
-            # TODO: filter out RT part
-            rt_match = re.match('RT \@(\S+)\:', tweet_text.encode('ascii', 'ignore'))
-            if rt_match:
-                screen_name = rt_match.group(1)
-            else:
-                screen_name = None
             if tweet_text:
+                rt_match = re.match('RT \@(\S+)\:', tweet_text.encode('ascii', 'ignore'))
+                if rt_match:
+                    screen_name = rt_match.group(1)
+                else:
+                    screen_name = None
+                # now print
                 printer_print(message=tweet_text, screen_name=screen_name)
         time.sleep(SLEEP_CONSTANT)
 
