@@ -7,7 +7,7 @@ from pi_utilities.twitter_helper import TwitterHelper
 
 IW_CHANNEL = 'C0ZBDJK7V'
 SCREEN_NAME = 'infinitewishing'
-SLEEP_CONSTANT = 3
+SLEEP_CONSTANT = 60*9
 
 
 tw = TwitterHelper(access_token_key=SECRETS_DICT['TWITTER_ACCESS_TOKEN'],
