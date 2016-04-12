@@ -1,5 +1,7 @@
 from slack_helper import slack_notify_message
+from printer_helper import rprint
 import time
+import re
 
 from hello_settings import SECRETS_DICT
 from pi_utilities.twitter_helper import TwitterHelper
@@ -17,6 +19,7 @@ tw = TwitterHelper(access_token_key=SECRETS_DICT['TWITTER_ACCESS_TOKEN'],
 
 
 def _slack(message):
+    message = message.encode('ascii', 'ignore')
     slack_notify_message(message=message, channel_id=IW_CHANNEL)
 
 
@@ -24,7 +27,8 @@ def get_new_tweets(since_id):
     return tw.get_latest_tweets(screen_name=SCREEN_NAME, count=10, since_id=since_id)
 
 
-def printer_print(message):
+def printer_print(message, screen_name):
+    rprint(msg=message, screen_name=screen_name)
     _slack(message)
 
 
@@ -37,10 +41,13 @@ def iw():
             since_id = tweet['id_str']
             tweet_text = tweet.get('text')
             # TODO: filter out RT part
+            rt_match = re.match('RT \@(\S+)\:', str(tweet_text))
+            if rt_match:
+                screen_name = rt_match.group(1)
+            else:
+                screen_name = None
             if tweet_text:
-                tweet_text = tweet_text.encode('ascii', 'ignore')
-                if tweet_text:
-                    printer_print(tweet_text)
+                printer_print(message=tweet_text, screen_name=screen_name)
         time.sleep(SLEEP_CONSTANT)
 
 
