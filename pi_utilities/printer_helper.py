@@ -10,7 +10,7 @@ printer = Adafruit_Thermal("/dev/ttyAMA0", 19200, timeout=5)
 
 
 def rprint(msg, screen_name='test'):
-    print('msg: {}'.format(msg.encode('ascii', 'ignore')))
+    # print('msg: {}'.format(msg.encode('ascii', 'ignore')))
     printer.inverseOn()
     printer.print(' ' + '{:<31}'.format(screen_name))
     printer.inverseOff()
