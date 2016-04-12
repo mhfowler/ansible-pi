@@ -41,7 +41,7 @@ def iw():
             since_id = tweet['id_str']
             tweet_text = tweet.get('text')
             # TODO: filter out RT part
-            rt_match = re.match('RT \@(\S+)\:', str(tweet_text))
+            rt_match = re.match('RT \@(\S+)\:', tweet_text.encode('ascii', 'ignore'))
             if rt_match:
                 screen_name = rt_match.group(1)
             else:
