@@ -1,3 +1,6 @@
+#!/usr/bin/python
+
+from __future__ import print_function
 from p_thermal.Adafruit_Thermal import *
 from unidecode import unidecode
 import HTMLParser
@@ -7,7 +10,7 @@ printer = Adafruit_Thermal("/dev/ttyAMA0", 19200, timeout=5)
 
 
 def rprint(msg, screen_name='test'):
-    print 'msg: {}'.format(msg)
+    print('msg: {}'.format(msg))
     printer.inverseOn()
     printer.print(' ' + '{:<31}'.format(screen_name))
     printer.inverseOff()

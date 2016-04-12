@@ -2,11 +2,11 @@
 - name: 'Configure WIFI'
   copy: src=secret_files/wpa_supplicant.conf dest=/etc/wpa_supplicant/wpa_supplicant.conf mode=0600
 
-- name: 'Update APT package cache'
-  action: apt update_cache=yes
+#- name: 'Update APT package cache'
+#  action: apt update_cache=yes
 
-- name: 'Upgrade APT to the latest packages'
-  action: apt upgrade=safe
+#- name: 'Upgrade APT to the latest packages'
+#  action: apt upgrade=safe
 
 - name: 'Ensure log directory'
   action: file dest={{log_dir}} state=directory mode=777
