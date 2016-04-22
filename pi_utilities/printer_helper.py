@@ -7,6 +7,7 @@ import HTMLParser
 
 
 printer = Adafruit_Thermal("/dev/ttyAMA0", 19200, timeout=5)
+printer.upsideDownOn()
 
 
 def rprint(msg, screen_name='test'):
