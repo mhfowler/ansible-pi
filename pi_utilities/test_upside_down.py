@@ -27,9 +27,11 @@ def test_print_modes():
     nums = [int(x) for x in nums]
 
     for num in nums:
-        print num
+        print 'num: {}'.format(num)
         text = "{}: Brair rabbit went to the briar patch and hooboy it was prickly".format(num)
-        printer.setPrintMode(num)
+        # printer.setPrintMode(num)
+        printer.printMode = num
+        printer.writePrintMode()
         printer.println(text)
         printer.feed(7)
 
