@@ -48,6 +48,6 @@
     - python-imaging
     - python-unidecode
 
-- name: 'Reboot'
-  command: /sbin/reboot
+#- name: 'Reboot'
+#  command: /sbin/reboot
 
