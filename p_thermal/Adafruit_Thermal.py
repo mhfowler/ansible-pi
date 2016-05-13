@@ -312,6 +312,7 @@ class Adafruit_Thermal(Serial):
 			self.maxColumn  = 32
 
 	def writePrintMode(self):
+		print('++ print mode: {}'.format(self.printMode))
 		self.writeBytes(27, 33, self.printMode)
 
 	def normal(self):
