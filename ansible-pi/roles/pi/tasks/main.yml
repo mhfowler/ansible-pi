@@ -22,6 +22,7 @@
 
 - name: 'Deploy code from git'
   git: repo={{repo_url}} dest={{src_dir}} remote={{repo_remote}} version={{repo_branch}} accept_hostkey=yes
+  tags: code
 
 - name: 'Ensure secret_files directory'
   action: file dest={{src_dir}}/ansible-pi/secret_files state=directory
