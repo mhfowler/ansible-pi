@@ -305,7 +305,7 @@ class Adafruit_Thermal(Serial):
 	   for i in range(len(textWrapped)):
 		  textWrapped[i]+='\n'
 
-	   # textWrappedReversed = textWrapped[::-1]
+	   textWrapped = textWrapped[::-1]
 	   stringForPrinter = ''.join(list(textWrapped))
 	   return stringForPrinter
 

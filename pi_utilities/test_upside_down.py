@@ -31,9 +31,7 @@ def test_print_modes():
     printer.writeBytes(27, 123, 1)
     text = "TEST: Brair rabbit went to the briar patch and hooboy it was prickly"
     r_text = printer.textWrapped(text)
-    print r_text
-    printer.writePrintMode()
-    printer.println(text)
+    printer.println(r_text)
     printer.feed(7)
 
 
