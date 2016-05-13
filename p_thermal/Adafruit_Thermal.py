@@ -312,7 +312,6 @@ class Adafruit_Thermal(Serial):
 			self.maxColumn  = 32
 
 	def writePrintMode(self):
-		print('++ print mode: {}'.format(self.printMode))
 		self.writeBytes(27, 33, self.printMode)
 
 	def normal(self):
@@ -326,10 +325,10 @@ class Adafruit_Thermal(Serial):
 		self.unsetPrintMode(self.INVERSE_MASK)
 
 	def upsideDownOn(self):
-		self.setPrintMode(self.UPDOWN_MASK)
+		self.writeBytes(27, 123, 1)
 
 	def upsideDownOff(self):
-		self.unsetPrintMode(self.UPDOWN_MASK)
+		self.writeBytes(27, 123, 0)
 
 	def doubleHeightOn(self):
 		self.setPrintMode(self.DOUBLE_HEIGHT_MASK)
