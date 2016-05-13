@@ -25,7 +25,7 @@ def rprint(msg, screen_name='test'):
     # Remove HTML escape sequences
     # and remap Unicode values to nearest ASCII equivalents
     text = unidecode(HTMLParser.HTMLParser().unescape(msg))
-    r_text = printer.textWrapper(text)
+    r_text = printer.textWrapped(text)
 
     printer.print(r_text)
 
