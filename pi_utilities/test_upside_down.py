@@ -24,6 +24,7 @@ def test_print_modes():
     nums = ["".join(seq) for seq in itertools.product("01", repeat=6)]
     nums = [str(x) for x in nums]
     nums = filter(lambda x: x.count('1') == 1, nums)
+    nums = [int(x) for x in nums]
 
     for num in nums:
         print num
