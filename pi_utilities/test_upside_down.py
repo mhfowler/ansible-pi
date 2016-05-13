@@ -37,9 +37,24 @@ def test_print_modes():
     printer.feed(7)
 
 
+def textWrapped(text):         #maxColumn can be fetched from Adafruit_Thermal.py (it is 32)
+   textWrapped = textwrap.wrap(text, width=32)
+   for i in range(len(textWrapped)):
+      textWrapped[i]+='\n'
+
+   textWrappedReversed = textWrapped[::-1]
+   stringForPrinter = ''.join(list(textWrappedReversed))
+   return stringForPrinter
+
+
 if __name__ == '__main__':
     # printer_test()
-    test_print_modes()
+    # test_print_modes()
+
+
+    text = "TEST: Brair rabbit went to the briar patch and hooboy it was prickly"
+    r_text = textWrapped(text)
+
 
 
     # import itertools
