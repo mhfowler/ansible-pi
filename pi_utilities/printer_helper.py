@@ -8,8 +8,8 @@ import HTMLParser
 
 printer = Adafruit_Thermal("/dev/ttyAMA0", 19200, timeout=5)
 printer.upsideDownOn()
-printer.printMode = 46
-printer.writePrintMode()
+# printer.printMode = 46  # font size, slightly bolder font
+# printer.writePrintMode()
 
 
 def rprint(msg, screen_name='test'):
