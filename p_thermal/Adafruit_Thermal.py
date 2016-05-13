@@ -36,6 +36,7 @@
 from __future__ import print_function
 from serial import Serial
 import time
+import textwrap
 
 class Adafruit_Thermal(Serial):
 
@@ -298,6 +299,15 @@ class Adafruit_Thermal(Serial):
 			self.maxColumn  = 16
 		else:
 			self.maxColumn  = 32
+
+	def textWrapped(self, text):         #maxColumn can be fetched from Adafruit_Thermal.py (it is 32)
+	   textWrapped = textwrap.wrap(text, width=self.maxColumn)
+	   for i in range(len(textWrapped)):
+		  textWrapped[i]+='\n'
+
+	   textWrappedReversed = textWrapped[::-1]
+	   stringForPrinter = ''.join(list(textWrappedReversed))
+	   return stringForPrinter
 
 	def unsetPrintMode(self, mask):
 		self.printMode &= ~mask

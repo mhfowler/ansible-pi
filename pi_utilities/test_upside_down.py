@@ -27,23 +27,27 @@ def test_print_modes():
     # nums = [int(x, 2) for x in nums]
     # nums.sort()
 
-    nums = range(0, 256)
 
     printer.writeBytes(27, 123, 1)
     text = "TEST: Brair rabbit went to the briar patch and hooboy it was prickly"
+    r_text = printer.textWrapped(text)
+    print r_text
     printer.writePrintMode()
     printer.println(text)
     printer.feed(7)
 
-    for num in nums:
-        print 'num: {}'.format(num)
-        text = "{}: Brair rabbit went to the briar patch and hooboy it was prickly".format(num)
-        # printer.setPrintMode(num)
-        printer.printMode = num
-        printer.writePrintMode()
-        printer.println(text)
-        printer.feed(7)
 
 if __name__ == '__main__':
     # printer_test()
     test_print_modes()
+
+
+    # import itertools
+    # nums = ["".join(seq) for seq in itertools.product("01", repeat=6)]
+    # nums = [str(x) for x in nums]
+    # nums = filter(lambda x: x.count('1') == 1, nums)
+    # # nums = [int(x, 2) for x in nums]
+    # nums.sort()
+    #
+    # for num in nums:
+    #     print num
